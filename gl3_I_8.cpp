@@ -1,27 +1,27 @@
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
-int main()
-{
+int main() {
+    const int r = 25;
     int x,y;
-    setlocale(LC_ALL,"Russian");
-    cout << "Ââåäèòå x,y: " << endl;
-    cin >> x,y;
     
-    if (y == -abs(x))
-    {
-    	cout << "Äà";
+    setlocale(LC_ALL,"Russian");
+    
+    cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ x,y: " << endl;
+    cin >> x >> y;
+    
+    if (y <= -abs(x) && sqrt(x*x+y*y) <= r) {
+        if ( (y < -abs(x)) && (sqrt(x*x+y*y) < r) ) {
+    	    cout << "Ð”Ð°";
+        }
+        else {
+            cout << "ÐÐ° Ð³Ñ€Ð°Ð½Ð¸Ñ†Ðµ";
+        }
 	}
-    else if ((y == -abs(x)) && (y <= -25))
-    {
-    	cout << "Íåò";
+	else {
+	    cout << "ÐÐµÑ‚";
 	}
-	/*
-	else
-	{
-		cout << "Íà ãðàíèöå";
-	}
-	*/
     return 0;
 }
