@@ -1,38 +1,26 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main() {
+	
     setlocale(LC_ALL,"Russian");
-
-    string day;
-    cout << "Введите день недели: ";
+    
+    unsigned day;
+    cout<<"Введите день недели: ";
     cin >> day;
     
-	if (day == "ПН" || day == "Понедельник") {
-    	cout << "9:00 - 17:00" << endl;
-    }
-	else if (day == "ВТ" || day == "Вторник") {
-		cout << "8:00 - 20:00" << endl;
+    
+    switch(day) {
+    	case 1://Понедельник
+    		case 3://Среда
+    			case 5: cout << "9:00 - 18:00"<<endl; break;//Пятница
+    	case 2://Вторник
+			case 4: cout << "7:00 - 16:00"<<endl;break;//Четверг
+    	case 6://Суббота
+    		case 7: cout <<"Выходной"<<endl;break;//Воскресенье
+    	default: cout << "Введите верный день недели"<<endl;//Неверный ввод
 	}
-    else if (day == "СР" || day == "Среда") {
-        cout << "10:00 - 16:00" << endl;
-    }
-    else if (day == "ЧТ" || day == "Четверг") {
-        cout << "9:00 - 17:00" << endl;
-    }
-    else if (day == "ПТ" || day == "Пятница") {
-        cout << "8:00 - 16:00" << endl;
-    }
-    else if (day == "СБ" || day == "Суббота") {
-        cout << "Выходной день" << endl;
-    }
-    else if (day == "ВС" || day == "Воскресенье") {
-        cout << "Выходной день" << endl;
-    }
-    else {
-        cout << "Такого дня недели не существует"<< endl;
-    }
+    
     return 0;
 }
