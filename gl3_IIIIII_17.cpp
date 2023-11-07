@@ -2,14 +2,14 @@
 
 using namespace std;
 
-float result_func(int x, int a, int b, int c){
-    if (x < 93){
+float result_func(float x, float a, float b, float c){
+    if (x < 93.0){
         return a+b*x;
     }
-    else if (92 < x && x < 121){
+    else if (x < 121.0){
         return b-a*c;
     }
-    else if (x > 120){
+    else {
         return a*b*x;
     }
 
@@ -22,14 +22,14 @@ int main(){
 
     cout << "¬ведите A,B,h: ";
     cin >> A >> B >> h;
-    cout << endl;
+    //cout << endl;
     
     float a,b,c;
     cout << "¬ведите a,b,c: ";
     cin >> a >> b >> c;
 
 
-    for (int i = A; i < B; i += h){
+    for (float i = A; i <= B; i += h){
         ans = result_func(i,a,b,c);
         cout << "ƒл€ x = " << i << " «начение y равно: " << ans << endl;
     }
