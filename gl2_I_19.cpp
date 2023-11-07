@@ -13,17 +13,14 @@ float t(float a, float b, float c){ // возвращает true, если возможно, false в п
             if (c < a+b){
                 return true;
             }
-
             else{
                 return false;
             }
         }
-
         else{
             return false;
         }
     }
-
     else{
         return false;
     }
@@ -44,7 +41,7 @@ int main(){
 
     float x1,x2,x3,y1,y2,y3;
     
-    cout << "Введите координаты x1,x2,x3,y1,y2,y3";
+    cout << "Введите координаты x1,x2,x3,y1,y2,y3: ";
     cin >> x1 >> x2 >> x3 >> y1 >> y2 >> y3;
     cout << endl;
 
@@ -53,15 +50,19 @@ int main(){
     dist2 = distance(x3,x2,y3,y2);
     dist3 = distance(x1,x3,y1,y3);
 
+    cout << dist1 << endl << dist2 << endl << dist3 << endl;
+
     bool t1;
     t1 = t(dist1, dist2, dist3);
     
-    if (t1){// проверяем можно ли постоить треугольник
+    cout << t1 << endl;
+
+    if (t1 == 1){// проверяем можно ли постоить треугольник
         cout << "Треугольник с данными сторонами существует";
     }
     else{
         cout << "Треугольника с данными сторонами не существует";
     }
-    
-    return 0;    
+
+    return 0;
 }
