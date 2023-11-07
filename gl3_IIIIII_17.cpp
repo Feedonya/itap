@@ -2,15 +2,11 @@
 
 using namespace std;
 
-float result_func(int x){
-    float a,b,c;
-    cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ·Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ñ a,b,c";
-    cin >> a >> b >> c;
-
+float result_func(int x, int a, int b, int c){
     if (x < 93){
         return a+b*x;
     }
-    else if (92 < x < 121){
+    else if (92 < x && x < 121){
         return b-a*c;
     }
     else if (x > 120){
@@ -24,13 +20,18 @@ int main(){
 
     float A,B,h,ans;
 
-    cout << "Ğ’Ğ²ĞµĞ´Ğ¸Ñ‚Ğµ Ğ½Ğ°Ñ‡Ğ°Ğ»ÑŒĞ½ÑƒÑ A, ĞºĞ¾Ğ½ĞµÑ‡Ğ½ÑƒÑ B Ğ¸ ÑˆĞ°Ğ³ h: ";
+    cout << "Ââåäèòå A,B,h: ";
     cin >> A >> B >> h;
     cout << endl;
+    
+    float a,b,c;
+    cout << "Ââåäèòå a,b,c: ";
+    cin >> a >> b >> c;
+
 
     for (int i = A; i < B; i += h){
-        ans = result_func(i);
-        cout << "Ğ”Ğ»Ñ" << i << "Ğ—Ğ½Ğ°Ñ‡ĞµĞ½Ğ¸Ğµ Ñ€Ğ°Ğ²Ğ½Ğ¾" << ans << endl;
+        ans = result_func(i,a,b,c);
+        cout << "Äëÿ x = " << i << " Çíà÷åíèå y ğàâíî: " << ans << endl;
     }
 
     return 0;
