@@ -3,23 +3,11 @@
 
 using namespace std;
 
-float distance(){ // возвращает вещественное рассто€ние между 2-м€ координатами
-    float x1,x2,y1,y2;
-    
-    cout << "¬ведите координаты x1,x2,y1,y2";
-    cin >> x1 >> x2 >> y1 >> y2;
-    cout << endl;
-
+float distance(float x1, float x2,float y1, float y2){ // возвращает вещественное рассто€ние между 2-м€ координатами
     return sqrt(((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2)));
 }
 
-float t(){ // возвращает true, если возможно, false в противном случае
-    float a,b,c;
-
-    cout << "¬ведите длины сторон a,b,c";
-    cin >> a >> b >> c;
-    cout << endl;
-
+float t(float a, float b, float c){ // возвращает true, если возможно, false в противном случае
     if (a < b+c){
         if (b < a+c){
             if (c < a+b){
@@ -35,15 +23,45 @@ float t(){ // возвращает true, если возможно, false в противном случае
             return false;
         }
     }
-    
+
     else{
         return false;
     }
 }
 
+/*
+
+1)¬водим x1 x2 x3 y1 y2 y3 дл€ трех точек треугольника
+2)¬ычисл€ем длину отрезков
+3)ѕровер€ем может ли быть такой треугольник
+4)Profit
+
+*/
 int main(){
     setlocale(LC_ALL,"Russian");
-    
 
+    bool dist;
+
+    float x1,x2,x3,y1,y2,y3;
+    
+    cout << "¬ведите координаты x1,x2,x3,y1,y2,y3";
+    cin >> x1 >> x2 >> x3 >> y1 >> y2 >> y3;
+    cout << endl;
+
+    float dist1, dist2, dist3;
+    dist1 = distance(x1,x2,y1,y2);
+    dist2 = distance(x3,x2,y3,y2);
+    dist3 = distance(x1,x3,y1,y3);
+
+    bool t1;
+    t1 = t(dist1, dist2, dist3);
+    
+    if (t1){// провер€ем можно ли постоить треугольник
+        cout << "“реугольник с данными сторонами существует";
+    }
+    else{
+        cout << "“реугольника с данными сторонами не существует";
+    }
+    
     return 0;    
 }
