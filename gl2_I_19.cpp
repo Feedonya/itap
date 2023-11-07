@@ -50,14 +50,14 @@ int main(){
     dist2 = distance(x3,x2,y3,y2);
     dist3 = distance(x1,x3,y1,y3);
 
-    cout << dist1 << endl << dist2 << endl << dist3 << endl;
+    //cout << dist1 << endl << dist2 << endl << dist3 << endl;
 
     bool t1;
     t1 = t(dist1, dist2, dist3);
     
-    cout << t1 << endl;
+    //cout << t1 << endl;
 
-    if (t1 == 1){// проверяем можно ли постоить треугольник
+    if (t1){// проверяем можно ли построить треугольник
         cout << "Треугольник с данными сторонами существует";
     }
     else{
