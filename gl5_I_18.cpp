@@ -5,12 +5,12 @@ using namespace std;
 int main(){
     setlocale(LC_ALL,"Russian");
 
-    int n, S=0;
+    double n, S;
     cout << "Введите n: ";
     cin >> n;
     
-    for (int i = 1; i <=n; ++i){
-        S = S + i*i;
+    for (double i = 1; i <= n; ++i){
+        S += (pow(-1,i+1) / (4*i*i+4*i+1));
     }
 
     cout << "При n = " << n << " значение S = " << S;
