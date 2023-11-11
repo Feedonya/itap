@@ -1,6 +1,1 @@
-.vscode/settings.json
-.vscode/tasks.json
-gl2_I_19.exe
-.vscode/launch.json
-test.cpp
-gl3_II_7.exe
+*.exe
