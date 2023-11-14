@@ -8,22 +8,7 @@ float distance(float x1, float x2,float y1, float y2){ // возвращает �
 }
 
 float t(float a, float b, float c){ // возвращает true, если возможно, false в противном случае
-    if (a < b+c){
-        if (b < a+c){
-            if (c < a+b){
-                return true;
-            }
-            else{
-                return false;
-            }
-        }
-        else{
-            return false;
-        }
-    }
-    else{
-        return false;
-    }
+    return (a < b+c) &&  (b < a+c) && (c < a+b);
 }
 
 /*
@@ -52,7 +37,7 @@ int main(){
 
     //cout << dist1 << endl << dist2 << endl << dist3 << endl;
 
-    bool t1;
+    bool t1;    
     t1 = t(dist1, dist2, dist3);
     
     //cout << t1 << endl;

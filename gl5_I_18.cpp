@@ -8,9 +8,12 @@ int main(){
     double n, S;
     cout << "Введите n: ";
     cin >> n;
+
+    int sign = 1;
     
     for (double i = 1; i <= n; ++i){
-        S += (pow(-1,i+1) / (4*i*i+4*i+1));
+        S += (sign / (4*i*i+4*i+1));
+        sign = -sign;
     }
 
     cout << "При n = " << n << " значение S = " << S;
