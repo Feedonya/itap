@@ -1,0 +1,19 @@
+#include <iostream>
+
+int main() {
+    float e;
+    std::cin >> e;
+    int five = 5;
+    int four = 16;
+    float temp = 1 / (5 + 16);
+    float ans = 0;
+    while (e < temp) {
+        ans += temp;
+        five *= 5;
+        four *= 4;
+        temp = 1 / (five + four);
+    }
+    std::cout << ans << std::endl;
+    return 0;
+}
+
