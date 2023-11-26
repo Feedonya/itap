@@ -1,8 +1,10 @@
 #include <iostream>
 
+using namespace std;
+
 int main() {
     float e;
-    std::cin >> e;
+    cin >> e;
     int five = 5;
     int four = 16;
     float temp = 1 / (5 + 16);
@@ -13,7 +15,7 @@ int main() {
         four *= 4;
         temp = 1 / (five + four);
     }
-    std::cout << ans << std::endl;
+    cout << ans << std::endl;
     return 0;
 }
 
