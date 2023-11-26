@@ -1,23 +1,29 @@
 #include <iostream>
-#include <cmath>
 using namespace std;
 
 int main(){
     setlocale(LC_ALL,"Russian");
 
-<<<<<<< HEAD
-    int k, S=0;
+    int k, sign = 1, x, t = 4;
     cout << "Введите k: "; 
-=======
-    int k, S=0, x;
-    cout << "Введите k: ";
->>>>>>> c4bb35b088a15b7797f5e7ff0f20a2633b5858ab
     cin >> k;
+    cout << "Введите x: ";
+    cin >> x;
+
+    double znam = 2,chisl = x*x;
+    double ans=0;
+
     
     for (int n=1; n<=k; ++n){
-        n = 2*n;
-        S += (-1*pow(x,n)/);
+        ans += (sign * chisl) / (znam);
+        chisl *= x*x;//4 16 64 256 1024
+        znam *= (t * (t-1));//2 24 120 40320
+        t += 2;
+        sign = -sign;
+        cout << "Для n = " << n << " Ответ равен: " << ans << endl;
     }
+
+    //cout << "Для k = " << k << "Ответ равен: " << ans;
 
     return 0;
 }
