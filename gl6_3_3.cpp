@@ -2,10 +2,6 @@
 
 using namespace std;
 
-void print_array(int **arr, int lines, int columns, int len_vec);// инициализируем функции
-int * insert_vector_in_array(int **arr, int lines, int columns, int len_vec);
-
-
 int main(){
     setlocale(LC_ALL,"Russian");
 
