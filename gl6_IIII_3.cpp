@@ -2,8 +2,8 @@
 
 using namespace std;
 
-void print_array(int **arr, int lines, int columns);
-int * insert_vector_in_array(int **arr, int lines, int columns);
+void print_array(int **arr, int lines, int columns, int len_vec);// инициализируем функции
+int * insert_vector_in_array(int **arr, int lines, int columns, int len_vec);
 
 
 int main(){
@@ -27,41 +27,44 @@ int main(){
         }
     }
 
-    print_array(b,n,m);
-
-    insert_vector_in_array(b,n,m);
-
-    print_array(b,n,m);
-
-    return 0;
-}
-
-int* insert_vector_in_array(int **arr, int lines, int columns){ //вставляем вектор, если столбец(column) четный
     int len_vec;
     cout << "Введите длину вектора: ";
     cin >> len_vec;
 
+    insert_vector_in_array(b,n,m,len_vec);
+
+    print_array(b,n,m,len_vec);
+
+    return 0;
+}
+
+int* insert_vector_in_array(int **arr, int lines, int columns, int len_vec){ //вставляем вектор, если столбец(column) четный
     cout << "Введите вектор: ";
     int *vec = new int[len_vec];
     for (int i = 0; i < len_vec; ++i){ //инициализируем вектор
         cin >> vec[i];
     }
 
-    for (int i = 0; i < columns; ++i){ //заменяем четные столбцы на введеный вектор
-        if (i%2==0){
-            for (int j = 0; j < lines; ++j){
-                arr[i][j] = vec[j]; // segmentation error!!! если длина вектора меньше длины столбца -> удаляем элементы четного столбца + вводим шам вектор и приравниванием длину данного столбца на длину вектора.
-            }
+    for (int i = 0; i < columns; i+=2){ //заменяем четные столбцы на введеный вектор
+        for (int j = 0; j < len_vec-1; ++j){
+            arr[i][j] = vec[j];
         }
     }
 
     return *arr;
 }
 
-void print_array(int **arr, int lines, int columns){//выводим массив
+void print_array(int **arr, int lines, int columns, int len_vec){//выводим массив
     for (int i = 0; lines > i; ++i){
-        for (int j = 0; columns > j; ++j){
-            cout << arr[i][j] << " ";
+        if (i%2==0){// выводим вектор
+            for (int j = 0; len_vec > j; ++j){
+                cout << arr[i][j] << " ";
+            }
+        }
+        else{// выводим обычный столбец
+            for (int j = 0; columns > j; ++j){
+                cout << arr[i][j] << " ";
+            }
         }
     }
     cout << endl;
@@ -74,4 +77,9 @@ test_input:
 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 1
 1
+
+test_output:
+1 1 2 3 1 1 2 3 1
 */
+
+//утечка памяти! надо зарезервировать длину двумерного массива сразу с длиной вектора и добавлять его и менять позицию
