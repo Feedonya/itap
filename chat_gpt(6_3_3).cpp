@@ -2,9 +2,9 @@
 
 int main(){
     int rows, cols;
-    std::cout << "Enter the number of rows: ";
+    std::cout << "Введите количество строк: ";
     std::cin >> rows;
-    std::cout << "Enter the number of columns: ";
+    std::cout << "Введите количество столбцов: ";
     std::cin >> cols;
 
     int** arr = new int*[rows];
@@ -12,15 +12,15 @@ int main(){
         arr[i] = new int[cols];
     
 
-    // Input values into the array
+    // Вводим значения в двумерный массив
     for (int i = 0; i < rows; i++) 
         for (int j = 0; j < cols; j++){
-            std::cout << "Enter value for arr[" << i << "][" << j << "]: ";
+            std::cout << "Введите значение в [" << i << "][" << j << "] позиции: ";
             std::cin >> arr[i][j];
         }
     
 
-    // Replace even columns with user input vector
+    // Меняем четные столбцы на вектор
     int* vec = new int[rows];
     std::cout << "Enter " << rows << " values for the vector: ";
     for (int i = 0; i < rows; i++) 
@@ -28,15 +28,14 @@ int main(){
     
 
     for (int i = 0; i < rows; i++) 
-        //if (i 
-            for (int j = 0; j < cols; j += 2) 
-                arr[i][j] = vec[i];
+        for (int j = 0; j < cols; j += 2) 
+            arr[i][j] = vec[i];
             
         
     
 
-    // Output the modified array
-    std::cout << "Modified array:" << std::endl;
+    // Выводим преобразованный массив
+    std::cout << "Преобразованный массив:" << std::endl;
     for (int i = 0; i < rows; i++) 
         for (int j = 0; j < cols; j++) 
             std::cout << arr[i][j] << " ";
@@ -44,7 +43,7 @@ int main(){
         std::cout << std::endl;
     
 
-    // Deallocate memory
+    // Очищаем память
     for (int i = 0; i < rows; i++) 
         delete[] arr[i];
     

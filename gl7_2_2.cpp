@@ -15,11 +15,11 @@ int main() {
     string inputStr, str1, str2;
 
     cout << "Введите строку, в которую мы будем вставлять другие строки: ";
-    cin >> inputStr;
+    getline(cin,inputStr);
     cout << "Введите подстроку, после которой мы вставим строку : ";
-    cin >> str1;
+    getline(cin,str1);
     cout << "Введите вставляемую строку: ";
-    cin >> str2;
+    getline(cin,str2);
 
     insertSubstring(inputStr, str1, str2);
 
@@ -30,7 +30,7 @@ int main() {
 
 /*
 test_input:
-abcdabcdad
+abcdabcdad abdd
 ab
 1
 
