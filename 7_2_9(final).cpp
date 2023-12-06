@@ -20,7 +20,7 @@ void processString(const string& input) {
         }
     }
 
-    if (tempString[0] != tempString[tempString.length() - 1]){
+    if (tempString[0] != tempString[tempString.length() - 1]){//проверяем последний элемент из очереди
         cout << tempString << endl;
     }
 }
@@ -29,7 +29,7 @@ int main() {
     setlocale(LC_ALL,"Russian");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    
+
     string input;
     getline(cin, input);
     processString(input);
