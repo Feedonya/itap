@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void processString(const string& input) {
+void processString(const string& input){
     string tempString = input;//очередь равна нашей строке - проверяем элементы, если подходят по условию - удаляем 
     string word;
     size_t pos = 0;
