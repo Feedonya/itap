@@ -24,7 +24,7 @@ void processString(const string& input) {
     cout << tempString;//выводим
 }
 
-int main() {
+int main(){
     setlocale(LC_ALL,"Russian");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
