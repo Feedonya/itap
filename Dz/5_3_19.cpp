@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int main() {
+int main(){
     float e;//вводим епсилон (>0)
     cout << "Введите епсилон: ";// 0.0001
     cin >> e;
