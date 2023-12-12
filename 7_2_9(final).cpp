@@ -12,10 +12,11 @@ void processString(const string& input){
     while ((pos = tempString.find(' ')) != string::npos){//пока есть пробелы в нашей строке
         word = tempString.substr(0, pos);//слово
         if (word[0] == word[word.length() - 1]){//если первый элемент выделенного из строки слова равен последнему элементу слова
+            cout << word;
             tempString.erase(0, pos + 1);//удаляем слово из строки
         }
         else{
-            cout << word << " ";//иначе выводим это слово и удаляем из очереди
+            //cout << word << " ";//иначе выводим это слово и удаляем из очереди
             tempString.erase(0, pos + 1);
         }
     }
@@ -38,7 +39,7 @@ int main() {
 }
 /*
 test_input:
-1) hello level kayak world
+1) hello. level kayak, world!
 2) зима акула собака ломал кидать
 
 test_output:
