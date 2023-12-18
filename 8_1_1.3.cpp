@@ -15,15 +15,23 @@ int main(){
     unsigned n;
     cout << "Введите N: ";
     cin >> n;
-    cout << prime(n) << endl;
+
+    bool check;
+    check = prime(n);
+    if (check){
+        cout << n << " - простое число" << endl;
+    }
+    else{
+        cout << n << " - составное  число" << endl;
+    }
 
     unsigned a, b, ans = 0;
     cout << "Введите a, b через пробел: ";
     cin >> a >> b;
     
 
-    for (int i = a; i < b; ++i){
-        if (prime(i))
+    for (int i = a; i <= b; ++i){
+        if (!(prime(i)))
             ans += i;
     }
 
@@ -31,3 +39,13 @@ int main(){
 
     return 0;
 }
+
+/*
+input: 
+10 
+1 11
+
+output:
+10 - составное
+29
+*/
