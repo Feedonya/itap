@@ -95,5 +95,5 @@ how it works:
 
 output:
 
-2.33 ...
+2.333333
 */

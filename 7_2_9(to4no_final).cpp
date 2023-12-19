@@ -13,6 +13,7 @@ int main() {
   string word = "";
   cout << "¬ведите строку:" << endl;
   getline(cin, str);
+  str.insert(0, " ");
 
   char c;
   cout << "¬ведите символ:" << endl;
@@ -24,7 +25,8 @@ int main() {
   for (int i = 0; i < str.size(); ++i){//проходим по строке
     if (str[i] == c){//если находим символ равный заданной букве
       int k = str.find_first_of(comp, i+1);//переменна€, котора€ хранит позицию препинани€ после слова
-      if (str[i] == str[k-1] && i != k-1){//если это не отдельно вз€тый символ и последний символ слова равен первому
+      int l = comp.find(str[i-1]);
+      if (str[i] == str[k-1] && i != k-1 && l >= 0){//если это не отдельно вз€тый символ и последний символ слова равен первому
         for (int j = i; j < k; j++){//выводим это слово
           cout << str[j];
           f = true;
@@ -47,8 +49,15 @@ test_input:
    l
 2) зима; акула, собака; ломал! кидать?
    л
+3) rtyl hgdflhgfdl kjh lol.
+   l
+4) ljhl ghjljhgl ghj lol.
+   l
+  
 
 test_output:
 1) level
 2) ломал
+3) lol
+4) ljhl lol
 */
