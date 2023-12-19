@@ -72,6 +72,27 @@ int main() {
     }
     delete[] arr;
 
+    // Создание и заполнение двумерного массива
+    double** arr1 = new double*[rows];
+    for (int i = 0; i < rows; i++) {
+        arr1[i] = new double[cols];
+    }
+    inputArray(arr1, rows, cols);
+
+    // Вывод двумерного массива
+    cout << "Наш массив:" << endl;
+    outputArray(arr1, rows, cols);
+
+    // Подсчет среднего арифметического ненулевых элементов над побочной диагональю 
+    average = averageAboveSecondaryDiagonal(arr1, rows, cols);
+    cout << "Среднее значение ненулевых элементов над побочной диагональю равно: " << average << endl;
+
+    // Освобождение памяти
+    for (int i = 0; i < rows; i++) {
+        delete[] arr1[i];
+    }
+    delete[] arr1;
+
     return 0;
 }
 
