@@ -2,8 +2,7 @@
 
 using namespace std;
 
-// Шаблон для ввода двумерного массива
-template <typename T>
+template <typename T>// Шаблон для ввода двумерного массива
 void inputArray(T** arr, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -13,8 +12,7 @@ void inputArray(T** arr, int rows, int cols) {
     }
 }
 
-// Шаблон для вывода двумерного массива
-template <typename T>
+template <typename T>// Шаблон для вывода двумерного массива
 void outputArray(T** arr, int rows, int cols) {
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -24,8 +22,7 @@ void outputArray(T** arr, int rows, int cols) {
     }
 }
 
-// Шаблон для решения основной задачи - подсчета среднего арифметического ненулевых элементов, расположенных над побочной диагональю
-template <typename T>
+template <typename T>// Шаблон для решения основной задачи - подсчета среднего арифметического ненулевых элементов, расположенных над побочной диагональю
 double averageAboveSecondaryDiagonal(T** arr, int rows, int cols) {
     double sum = 0.0;
     int count = 0;
@@ -38,7 +35,7 @@ double averageAboveSecondaryDiagonal(T** arr, int rows, int cols) {
         }
     }
     if (count == 0) {
-        return 0.0;
+        return 0.0; 
     } else {
         return sum / count;
     }
@@ -51,15 +48,13 @@ int main() {
     cout << "Введите количество столбцов: ";
     cin >> cols;
 
-    // Создание и заполнение двумерного массива
-    int** arr = new int*[rows];
+    int** arr = new int*[rows];// Создание и заполнение двумерного массива
     for (int i = 0; i < rows; i++) {
         arr[i] = new int[cols];
     }
     inputArray(arr, rows, cols);
 
-    // Вывод двумерного массива
-    cout << "Наш массив:" << endl;
+    cout << "Наш массив:" << endl;// Вывод двумерного массива
     outputArray(arr, rows, cols);
 
     // Подсчет среднего арифметического ненулевых элементов над побочной диагональю 
