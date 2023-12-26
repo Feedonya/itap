@@ -2,7 +2,7 @@
 
 using namespace std;
 
-float result_func(float x, float a, float b, float c){
+float F(float x){
     if (x < 93.0){
         return a+b*x;
     }
@@ -13,6 +13,10 @@ float result_func(float x, float a, float b, float c){
         return a*b*x;
     }
 
+}
+
+void F(float x, float &y){
+    
 }
 
 int main(){
