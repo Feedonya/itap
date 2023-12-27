@@ -2,50 +2,51 @@
 
 using namespace std;
 
-
-
-#include <iostream>
-
-int findMin(int** array, int rows, int cols, int currentRow, int currentCol, int min) {
-    // Базовый случай: если мы дошли до конца массива
-    if (currentRow == rows) {
-        return min;
+int findMin(int** arr, int rows, int cols, int currentRow, int currentCol, int minVal){
+    if (currentRow == rows){//крайний случай
+        return minVal;
     }
-
-    // Если дошли до конца текущей строки, переходим на следующую строку
-    if (currentCol == cols) {
-        return findMin(array, rows, cols, currentRow + 1, 0, min);
+    if (currentCol == cols){//проходим дальше по строке
+        return findMin(arr, rows, cols, currentRow + 1, 0, minVal);
     }
-
-    // Если текущий элемент меньше текущего минимального значения, обновляем минимум
-    if (array[currentRow][currentCol] < min) {
-        min = array[currentRow][currentCol];
+    if (arr[currentRow][currentCol] < minVal){//проверяем элемент на минимальность
+        minVal = arr[currentRow][currentCol];
     }
-
-    // Рекурсивный вызов для следующего элемента
-    return findMin(array, rows, cols, currentRow, currentCol + 1, min);
+    return findMin(arr, rows, cols, currentRow, currentCol + 1, minVal);//проходим дальше по столбцу
 }
 
-int main(){
-    setlocale(LC_ALL,"Russian");
-    int n, m;
-    cout << "Введите размерность n, m: ";
-    cin >> n >> m;
+int main() {
+    int rows, cols;
+    cout << "Введите количество строк: ";
+    cin >> rows;
+    cout << "Введите количество столбцов: ";
+    cin >> cols;
 
-    int ** a = new int * [n];
-    for (int i = 0; i < n; ++i){
-        a[i] = new int [m];
-    }
-
-    cout << "Введите массив: ";
-    for (int i = 0; i < n; ++i){
-        for (int j = 0; j < m; ++j){
-            cin >> a[i][j];
+    int** arr = new int*[rows];
+    for (int i = 0; i < rows; i++){
+        arr[i] = new int[cols];
+        for (int j = 0; j < cols; j++){
+            cout << "Введите элемент: [" << i << "][" << j << "]: ";
+            cin >> arr[i][j];
         }
     }
 
-    int min = findMin(a, n, m, 0, 0, a[0][0]);
-    std::cout << "Наименьшее значение в массиве: " << min << std::endl;
+    int minVal = findMin(arr, rows, cols, 0, 0, arr[0][0]);
+    cout << "Минимальное значение в массиве: " << minVal << endl;
+
+    for (int i = 0; i < rows; i++){
+        delete[] arr[i];
+    }
+    delete[] arr;
 
     return 0;
 }
+/*
+input:
+3
+2
+1 2 3 4 5 6
+
+output:
+1
+*/
