@@ -3,7 +3,6 @@
 using namespace std;
 
 float F(float x, float a, float b, float c){
-
     if (x < 93.0){
         return a+b*x;
     }
@@ -16,8 +15,16 @@ float F(float x, float a, float b, float c){
 
 }
 
-void F(float x, float &y){//выводим значения
-    cout << "Для x = " << x << " Значение y равно: " << y << endl;
+void F(float x, float &y, float a, float b, float c){//выводим значения
+    if (x < 93.0){
+        y = a+b*x;
+    }
+    else if (x < 121.0){
+        y = b-a*c;
+    }
+    else{
+        y = a*b*x;
+    }
 }
 
 int main(){
@@ -33,9 +40,15 @@ int main(){
     cin >> a >> b >> c;
 
     for (float x = A; x <= B; x += h){
-
         y = F(x,a,b,c);
-        F(x,y);
+        cout <<"Для x = " << x << " значение равно: " << y << endl;
+    }
+
+    cout << "\n";
+
+    for (float x = A; x <= B; x += h){
+        F(x,y,a,b,c);
+        cout <<"Для x = " << x << " значение равно: " << y << endl;
     }
 
     return 0;
