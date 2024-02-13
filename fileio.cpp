@@ -14,9 +14,6 @@ int main(){
         cout << s;
         out << s << endl;
     }
-    
-    
-
     in.close();
     out.close();
     return 0;
