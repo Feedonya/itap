@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <string>
 
 using namespace std;
 
@@ -11,18 +10,20 @@ int main(){
     ofstream outg("g.txt");
     ofstream outh("h.txt");
 
-    string s;
+    char s;
 
-    while (in.peek() != EOF){
-        get(in,s);
-        if (isdigit(s))
+    while (in >> s){
+        if (isdigit(s)){
             outg << s << " ";
+        }
         else{
         	outh << s << " ";
 		}
     }
     
     in.close();
-    
+    outg.close();
+    outh.close();
+
     return 0;
 }
