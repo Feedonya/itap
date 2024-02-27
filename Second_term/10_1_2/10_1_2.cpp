@@ -4,12 +4,29 @@
 
 using namespace std;
 
-int main(){
+struct point {
+    int x, y, z;
+};
+
+// возвращает расстояние от начала координат
+double point::distance() { 
+    return (sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2);
+}
+
+int main() {
     setlocale(LC_ALL,"Russian");
 
     ifstream in("input.txt");
     
-    char s;
+    point coord;
+
+    while (in.peek() != EOF) {
+        in >> coord.x;
+        in >> coord.y;
+        in >> coord.z;
+        coord.point();
+    }
+    
 
     in.close();
     
