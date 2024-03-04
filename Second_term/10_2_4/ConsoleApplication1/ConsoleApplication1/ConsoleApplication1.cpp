@@ -16,7 +16,7 @@ struct student {
 
 // Если студент сдал экзамены - записываем во выходной файл
 bool student::delete_student() {
-    if (mark_of_first_exam > 2 or mark_of_second_exam > 2 or mark_of_third_exam > 2) {
+    if (mark_of_first_exam > 2 and mark_of_second_exam > 2 and mark_of_third_exam > 2) {
         return true;
     }
     return false;
