@@ -42,7 +42,7 @@ int main() {
         in >> mark.mark_of_third_exam;
 
         if (mark.delete_student()){
-            out << name.surname ;
+            out << name.surname << " " ;
             out << name.name_of_student << " ";
             out << name.patronymic << " ";
 
