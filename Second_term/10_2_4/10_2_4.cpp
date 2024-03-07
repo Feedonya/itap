@@ -36,34 +36,10 @@ int main() {
     student st1;
 
     while (in.peek() != EOF) {
-<<<<<<< HEAD
-        in >> name.surname;
-        in >> name.name_of_student;
-        in >> name.patronymic;
-
-        in >> group.id_group;
-
-        in >> mark.mark_of_first_exam;
-        in >> mark.mark_of_second_exam;
-        in >> mark.mark_of_third_exam;
-
-        if (mark.delete_student()){
-            out << name.surname << " " ;
-            out << name.name_of_student << " ";
-            out << name.patronymic << " ";
-
-            out << group.id_group << " ";
-
-            out << mark.mark_of_first_exam << " ";
-            out << mark.mark_of_second_exam << " ";
-            out << mark.mark_of_third_exam << endl;
-        }
-=======
     	st1.input();
     	if(st1.delete_student()){
     		st1.output();
 		}
->>>>>>> b0459790a281aee09ff0f7f94c0032af572fc3cf
     }
 
     in.close();
