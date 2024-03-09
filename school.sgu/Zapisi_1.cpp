@@ -64,7 +64,7 @@ void Date::change(){
 // файловый вывод
 void Date::output(){
     //cout << day << month << year;
-    out << day << '/' << month << '/' << year;
+    out << setw(2) << setfill('0') << day << '/' << setw(2) << setfill('0') << month << '/' << setw(4) << setfill('0') << year;
 }
 
 int main(){
