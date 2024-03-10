@@ -45,6 +45,7 @@ unsigned short Date::month_check(unsigned short month, unsigned short year){
     if ((month == 1) || (month == 12)){
         return 31;
     }
+    return 0;
 }
 
 // изменяем дату
