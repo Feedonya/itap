@@ -7,6 +7,7 @@
         "new": "cpp",
         "sstream": "cpp",
         "*.tcc": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "fstream": "cpp"
     }
 }

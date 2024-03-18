@@ -8,21 +8,14 @@ using namespace std;
 ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\school.sgu\\Zapis-4\\input.txt");
 ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\school.sgu\\Zapis-4\\output.txt");
 
-struct Date{
-    unsigned short day, month, year, n;
-    void input();
-    unsigned short month_check(unsigned short month, unsigned short year);
-    bool leap_year(unsigned short year);
-    void change();
-    void output();
-};
+struct Date {
+    unsigned short day, month, year;
 
-// файловый ввод
-void Date::input(){
-    char temp;
-    in >> day >> temp >> month >> temp >> year >> n;
-}
+    bool isLeapYear(int year) {
+        return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+    }
 
+<<<<<<< HEAD
 // возвращает true, если високосный год, false иначе
 bool Date::leap_year(unsigned short year){
     return ((year % 400 == 0) || ((year % 4 == 0) && (year % 100 != 0)));
@@ -73,9 +66,26 @@ void Date::change(){
         }
         else{
             n -= 365;
+=======
+    int daysInMonth(int month, int year) {
+        switch (month) {
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            return 30;
+        case 2:
+            if (isLeapYear(year))
+                return 29;
+            else
+                return 28;
+        default:
+            return 31;
+>>>>>>> 38a22907ace337723eea2879b427780bc2e4585b
         }
         year++;
     }
+<<<<<<< HEAD
     // рассматриваем перемещение в одном году
     else{
         // проходим по году (скорее всего пройдем несколько лишних шагов, но не более, чем 11 операций)
@@ -110,22 +120,54 @@ void Date::change(){
                     n -= date - day;
                     day = 1;
                 }
+=======
+
+    void output() {
+        cout << setw(2) << setfill('0') << day << "/" << setw(2) << month << "/" << year << endl;
+        out << setw(2) << setfill('0') << day << "/" << setw(2) << month << "/" << year << endl;
+    }
+
+    void nextDay() {
+        if (day == daysInMonth(month, year)) {
+            day = 1;
+            if (month == 12) {
+                month = 1;
+                year++;
+            }
+            else {
+                month++;
+>>>>>>> 38a22907ace337723eea2879b427780bc2e4585b
             }
         }
+        else {
+            day++;
+        }
     }
+<<<<<<< HEAD
     }
     */
+=======
+
+    void nextNDays(int m) {
+        for (int i = 0; i < m; i++) {
+            nextDay();
+        }
+    }
+};
+
+void input(Date &date, int& m) {
+    char temp;
+
+    in >> date.day >> temp >> date.month >> temp >> date.year;
+    in >> m;
+>>>>>>> 38a22907ace337723eea2879b427780bc2e4585b
 }
 
-// файловый вывод
-void Date::output(){
-    out << setw(2) << setfill('0') << day << '/' << setw(2) << setfill('0') << month << '/' << setw(4) << setfill('0') << year;
-}
-
-int main(){
-    Date dat;
-    dat.input();
-    dat.change();
+int main() {
+    Date dat = {};
+    int m;
+    input(dat, m);
+    dat.nextNDays(m);
     dat.output();
 
     in.close();

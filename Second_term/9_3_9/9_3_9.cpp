@@ -5,65 +5,32 @@ using namespace std;
 
 int main(){
     setlocale(LC_ALL,"Russian");
+    
+    ofstream out("binary.dat", ios::binary);
 
-    ofstream binaryFile("numbers.bin", ios::binary | ios::out);
-    if (binaryFile.is_open()){
-        for (int i = 1; i <= n; ++i){
-            binaryFile.write(reinterpret_cast<const char*>(&i), sizeof(int));
-        }
-        binaryFile.close();
+    int n, m;
+    cout << "Вводим n: ";
+    cin >> n;
+    cout << "Введите m: ";
+    cin >> m;
+
+    for (int i = 1; i <= n; i++){
+        out.write((char *)&i, sizeof(i));
     }
 
-        
-    char s;
-
-    in.close();
+    out.close();
     
-    return 0;
-}
+    ifstream in("binary.dat", ios::binary);
 
-/*
-#include <iostream>
-#include <fstream>
-#include <vector>
-
-int main() {
-    // Задаем количество целых чисел n
-    int n = 5;
-    
-    // Задаем число, кратность которому нужно проверять
-    int divisor = 3;
-
-    // Создаем и записываем числа в двоичный файл
-    std::ofstream binaryFile("numbers.bin", std::ios::binary | std::ios::out);
-    if (binaryFile.is_open()) {
-        for (int i = 1; i <= n; ++i) {
-            binaryFile.write(reinterpret_cast<const char*>(&i), sizeof(int));
+    int j = 0;
+    while (in.read((char*)&j, sizeof(j))){
+        if (j % m != 0){
+            cout << j << '\n';
+            in.seekg(sizeof(j), ios::cur);
         }
-        binaryFile.close();
-    }
-
-    // Читаем числа из файла и выводим на экран те, которые не кратны divisor
-    std::ifstream inFile("numbers.bin", std::ios::binary | std::ios::in);
-    if (inFile.is_open()) {
-        std::vector<int> numbers;
-        int num;
-        while (inFile.read(reinterpret_cast<char*>(&num), sizeof(int))) {
-            if (num % divisor != 0) {
-                numbers.push_back(num);
-            }
-        }
-        inFile.close();
-
-        // Выводим числа, не кратные divisor
-        std::cout << "Числа в файле, не кратные " << divisor << ":\n";
-        for (int num : numbers) {
-            std::cout << num << " ";
-        }
-    } else {
-        std::cerr << "Ошибка открытия файла.";
+        cout << "\t" << j << '\n';
+        in.seekg(sizeof(j), ios::cur);
     }
 
     return 0;
 }
-*/
