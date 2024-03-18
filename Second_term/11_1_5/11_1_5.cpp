@@ -12,10 +12,10 @@ struct student {
     string name_of_student, surname, patronymic;
     int id_group, mark_of_first_exam, mark_of_second_exam, mark_of_third_exam, mark_of_fourth_exam, mark_of_fifth_exam, date_of_birth;
     int sum[4];
-    int sum_of_student();
+    int sum_of_students();
     void input();
     void output();
-    void chose_sort(int *, int);
+    void insertionSort(int *, int);
 };
 
 void student::input() {
@@ -26,22 +26,21 @@ void student::output(){
 	out << sum << '\n';
 }
 
-int student::sum_of_student() {
+int student::sum_of_students() {
     return (mark_of_first_exam + mark_of_second_exam + mark_of_third_exam + mark_of_fourth_exam + mark_of_fifth_exam);
 }
 
-void student::chose_sort(int *sum, int n){
-	int temp[n];
-	int i,j;
-	for (i = 2; i <=n; i++){
-		j = i;
-		while (sum[i].key < sum[i+1].key){
-			temp  = sum[j];
-			sum[j] = sum[j-1];
-			sum[j] = temp;
-			j--;
-		}
-	}
+void student::insertionSort(int arr[], int n) {
+    for (int i = 1; i < n; ++i) {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        arr[j + 1] = key;
+    }
 }
 
 int main() {
@@ -49,13 +48,15 @@ int main() {
     student st1;
     int i = 0;
 
+	int sum[4];
+
     while (in.peek() != EOF) {
     	st1.input();
-    	sum[i] = st1.sum_of_students;
+    	sum[i] = st1.sum_of_students();
     	i++;
-		}
+	}
 	
-	chose_sort(sum, 4);
+	st1.insertionSort(sum, 4);
 	st1.output();
 
     in.close();
