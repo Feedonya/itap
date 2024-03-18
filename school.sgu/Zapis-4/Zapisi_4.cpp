@@ -5,8 +5,8 @@
 
 using namespace std;
 
-ifstream in("input.txt");
-ofstream out("output.txt");
+ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\school.sgu\\Zapis-4\\input.txt");
+ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\school.sgu\\Zapis-4\\output.txt");
 
 struct Date{
     unsigned short day, month, year, n;
@@ -50,6 +50,22 @@ unsigned short Date::month_check(unsigned short month, unsigned short year){
 
 // изменяем дату
 void Date::change(){
+    while (n > 0){
+        if (day == month_check(month,year)){
+            day = 1;
+            month++;
+        }
+        if (month == 13){
+            year++;
+            month = 1;
+            break;
+        }
+        day++;
+        n--;
+    }
+
+    /*
+    while (n > 0){
     // идем на год вперед, если n позволяет
     if (n > 364){
         if (Date::leap_year(year)){
@@ -58,6 +74,7 @@ void Date::change(){
         else{
             n -= 365;
         }
+        year++;
     }
     // рассматриваем перемещение в одном году
     else{
@@ -65,11 +82,27 @@ void Date::change(){
         for (unsigned short i = 0; i < 12; i++){
             unsigned short date;
             date = Date::month_check(month,year);
+            if (month > 12){
+                year++;
+                month = 1;
+            }
             while (n > 0){
-                // n < чем кол-во дней в месяце
-                if (n < date){
-                    day += n;
+                if (n + day == date){
+                    day = date;
+                    n = 0;
                     break;
+                }
+                // n < чем кол-во дней в месяце
+                if (n < date - day){
+                    day += n;
+                    n = 0;
+                    break;
+                }
+                // n == чем кол-во дней в месяце
+                else if (date == day){
+                    month++;
+                    n--;
+                    day = 1;
                 }
                 // n > чем кол-во дней в месяце
                 else{
@@ -80,6 +113,8 @@ void Date::change(){
             }
         }
     }
+    }
+    */
 }
 
 // файловый вывод
