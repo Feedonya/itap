@@ -15,7 +15,7 @@ int main(){
     cin >> m;
 
     for (int i = 1; i <= n; i++){
-        out.write((char *)&i, sizeof(i));
+        out.write((char *)&i, sizeof(0));
     }
 
     out.close();
@@ -26,10 +26,7 @@ int main(){
     while (in.read((char*)&j, sizeof(j))){
         if (j % m != 0){
             cout << j << '\n';
-            in.seekg(sizeof(j), ios::cur);
         }
-        cout << "\t" << j << '\n';
-        in.seekg(sizeof(j), ios::cur);
     }
 
     return 0;
