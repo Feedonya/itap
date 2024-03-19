@@ -15,13 +15,16 @@ int main(){
     cout << "Введите элементы массива: ";
     for (int i = 0; i < n; i++){
         cin >> a[i];
-        if (a[i] < 0){
-            auto multi = accumulate(i, i, 1, multiplies<int>());
+    }
+    
+    for (int &num : a){
+        if (num < 0) {
+            num *= 2;
         }
     }
 
-    for (int i = 0; i < a.size(); i++)
-        cout << a[i] << " ";
-
+    for (int num : a){
+        cout << num << " ";
+    }
     return 0;
 }
