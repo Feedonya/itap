@@ -50,7 +50,7 @@ int main() {
 
 	int sum[4];
 
-    while (in.peek() != EOF) {
+    while (i <= 4) { //? while (in.peek() != EOF) {
     	st1.input();
     	sum[i] = st1.sum_of_students();
     	i++;

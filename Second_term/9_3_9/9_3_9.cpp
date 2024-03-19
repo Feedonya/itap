@@ -8,14 +8,15 @@ int main(){
     
     ofstream out("binary.dat", ios::binary);
 
-    int n, m;
+    int n, m, temp;
     cout << "Вводим n: ";
     cin >> n;
     cout << "Введите m: ";
     cin >> m;
 
     for (int i = 1; i <= n; i++){
-        out.write((char *)&i, sizeof(0));
+        cin >> temp;
+        out.write((char *)&temp, sizeof(temp));
     }
 
     out.close();
