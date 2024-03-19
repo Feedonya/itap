@@ -4,8 +4,8 @@
 
 using namespace std;
 
-ifstream in("input.txt");
-ofstream out("output.txt");
+ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_2_12\\input.txt");
+ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_2_12\\output.txt");
 
 // Функция для считывания матрицы из файла
 bool read(const char* filename, int**& matrix, int& n){
@@ -51,7 +51,7 @@ void bubbleSort(int arr[], int n){
 }
 
 // Функция для сортировки диагонали матрицы по возрастанию элементов
-void sortDiagonal(int matrix[], int n){
+void sortDiagonal(int** matrix, int n){
     for (int i = 0; i < n; i++){
         int row = i;
         int col = i;
@@ -66,7 +66,7 @@ void sortDiagonal(int matrix[], int n){
         row = i;
         col = i;
         for (int j = 0; j < diagonalLength; j++){
-            diagonal[j] = matrix[row * n + col];
+            diagonal[j] = *matrix[row * n + col];
             row++;
             col++;
         }
@@ -76,7 +76,7 @@ void sortDiagonal(int matrix[], int n){
         row = i;
         col = i;
         for (int j = 0; j < diagonalLength; j++){
-            matrix[row * n + col] = diagonal[j];
+            *matrix[row * n + col] = diagonal[j];
             row++;
             col++;
         }
@@ -88,6 +88,22 @@ void sortDiagonal(int matrix[], int n){
 
 
 int main(){
-    
+    int** matrix = nullptr;
+    int n;
+
+    read("input.txt", matrix, n);
+    sortDiagonal(matrix, n);
+    print(matrix, n, out);
+
+    in.close();
+    out.close();
+
     return 0;
 }
+
+/*
+6 8 3 2
+4 9 1 5
+7 5 2 3
+1 6 4 7
+*/

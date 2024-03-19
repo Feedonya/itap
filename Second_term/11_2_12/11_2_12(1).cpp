@@ -4,8 +4,8 @@
 
 using namespace std;
 
-ifstream in("input.txt");
-ofstream out("output.txt");
+ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_2_12\\input.txt");
+ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_2_12\\output.txt");
 
 // Функция для считывания матрицы из файла
 bool read(const char* filename, int**& matrix, int& n) {
@@ -48,7 +48,7 @@ void sortDiagonal(int** matrix, int n, int row, int col) {
             }
         }
         if (matrix[r][c] < matrix[tempR][tempC]) {
-            swap(matrix[r][c], matrix[tempR][tempC]);
+            swap(matrix[r][c], matrix[tempR][tempC]);//метод пузырька
         }
     }
 }
