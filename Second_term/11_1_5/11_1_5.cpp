@@ -22,9 +22,8 @@ void student::input(){
 	in >> surname >> name_of_student >> patronymic >> date_of_birth >> mark_of_first_exam >> mark_of_second_exam >> mark_of_third_exam >> mark_of_fourth_exam >> mark_of_fifth_exam;
 }
 
-void student::output(int arr[], int n){
-    //out << surname << name_of_student << patronymic << date_of_birth << mark_of_first_exam << mark_of_second_exam << mark_of_third_exam << mark_of_fourth_exam << mark_of_fifth_exam;
-    for (int i = 0; i < n; i++)
+void student::output(int arr[], int i){
+    out << surname << " " << name_of_student << " " << patronymic << " " << date_of_birth << " " << mark_of_first_exam << " " << mark_of_second_exam << " " << mark_of_third_exam << " " << mark_of_fourth_exam << " " << mark_of_fifth_exam << " ";
 	out << arr[i] << '\n';
 }
 
@@ -63,7 +62,10 @@ int main(){
     n = i;
 	
 	st1.insertionSort(sum, n);
-	st1.output(sum, n);
+    out << group << '\n';
+    for (int i = 0; i < n; i++){
+	    st1.output(sum, i);
+    }
 
     in.close();
     out.close();
