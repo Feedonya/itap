@@ -22,15 +22,16 @@ void student::input(){
 	in >> surname >> name_of_student >> patronymic >> date_of_birth >> mark_of_first_exam >> mark_of_second_exam >> mark_of_third_exam >> mark_of_fourth_exam >> mark_of_fifth_exam;
 }
 
+//выводить весь инпут и после него вставлять отсортированную сумму
 void student::output(int arr[], int i){
-    out << surname << " " << name_of_student << " " << patronymic << " " << date_of_birth << " " << mark_of_first_exam << " " << mark_of_second_exam << " " << mark_of_third_exam << " " << mark_of_fourth_exam << " " << mark_of_fifth_exam << " ";
-	out << arr[i] << '\n';
+    out << arr[i] << '\n';
 }
 
 int student::sum_of_students(){
     return (mark_of_first_exam + mark_of_second_exam + mark_of_third_exam + mark_of_fourth_exam + mark_of_fifth_exam);
 }
 
+// Реализовать сортировку вставками
 void student::insertionSort(int* arr, int n){
    for (int i = 1; i < n; i++) {
        int key = arr[i];
@@ -52,19 +53,22 @@ int main(){
     in >> group;
 
 	int sum[n];
+    //for(int i=0; i<n)
 
     n = 0;
     while (in.peek() != EOF){
+        // Записываем в string in 
     	st1.input();
     	sum[i] = st1.sum_of_students();
     	i++;
 	}
+    in.seekg(0);
+    in.clear();
     n = i;
 	
 	st1.insertionSort(sum, n);
-    out << group << '\n';
     for (int i = 0; i < n; i++){
-	    st1.output(sum, i);
+	    st1.output(sum, i); 
     }
 
     in.close();
