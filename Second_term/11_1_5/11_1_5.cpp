@@ -4,10 +4,10 @@
 
 using namespace std;
 
-ifstream in("input.txt");
-ofstream out("output.txt");
-//ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_1_5\\input.txt");
-//ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_1_5\\output.txt");
+//ifstream in("input.txt");
+//ofstream out("output.txt");
+ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_1_5\\input.txt");
+ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_1_5\\output.txt");
 
 struct student{
     string name_of_student, surname, patronymic;
