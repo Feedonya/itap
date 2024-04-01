@@ -11,64 +11,73 @@ ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_1_5\\output.txt")
 
 struct student{
     string name_of_student, surname, patronymic;
-    int mark_of_first_exam, mark_of_second_exam, mark_of_third_exam, mark_of_fourth_exam, mark_of_fifth_exam, date_of_birth;
-    int sum_of_students();
-    void input();
-    void output(int[], int);
-    void insertionSort(int* , int);
+    int date_of_birth, sum_of_marks = 0;
+    int Marks[5];
+
+    student();
+    //student() {surname = "0", name_of_student = "0", patronymic = "0", date_of_birth = 0, sum_of_marks = 0; for (int i = 0; i < 5; i++) Marks[i] = 0;}
+    void output();
 };
 
-void student::input(){
-	in >> surname >> name_of_student >> patronymic >> date_of_birth >> mark_of_first_exam >> mark_of_second_exam >> mark_of_third_exam >> mark_of_fourth_exam >> mark_of_fifth_exam;
+student::student(){
+    in >> surname >> name_of_student >> patronymic >> date_of_birth;
+
+    for (int i = 0; i < 5; i++)
+        in >> Marks[i];
+    
+    for (int i = 0; i < 5; i++)
+        sum_of_marks +=Marks[i];
+}
+
+int Ni(){
+    int i = 0;
+    string temp;
+    while (getline(in,temp))
+        i++;
+        
+    in.clear();
+    in.seekg(0);
+    return i;
 }
 
 //выводить весь инпут и после него вставлять отсортированную сумму
-void student::output(int arr[], int i){
-    out << arr[i] << '\n';
-}
-
-int student::sum_of_students(){
-    return (mark_of_first_exam + mark_of_second_exam + mark_of_third_exam + mark_of_fourth_exam + mark_of_fifth_exam);
+void student::output(){
+    out << surname << " " << name_of_student << " " << patronymic << " " << date_of_birth << " ";
+    for (int i = 0; i < 5; i++) out << Marks[i]<<" ";
+    out << sum_of_marks;
+    out << "\n";
 }
 
 // Реализовать сортировку вставками
-void student::insertionSort(int* arr, int n){
-   for (int i = 1; i < n; i++) {
-       int key = arr[i];
-       int j = i - 1;
-
-       while (j >= 0 && arr[j] < key) {
-           arr[j + 1] = arr[j];
-           j = j - 1;
-       }
-       arr[j + 1] = key;
-   }
+void insertionSort(student* mass, int size){
+    for (int i = 1; i < size; i++){
+        int j = 1;
+        while (j > 0 && mass[j].sum_of_marks<mass[j-1].sum_of_marks){
+            swap(mass[j],mass[j-1]);
+            --j;
+        }
+    }
 }
 
 int main(){
     setlocale(LC_ALL, "Russian");
-    student st1;
+    int n;
+    n = Ni();
 
-    int i = 0, group, n = 20;
+    int group;
     in >> group;
 
-	int sum[n];
-    //for(int i=0; i<n)
+    student *Mass = new student[n];
 
-    n = 0;
-    while (in.peek() != EOF){
-        // Записываем в string in 
-    	st1.input();
-    	sum[i] = st1.sum_of_students();
-    	i++;
-	}
-    in.seekg(0);
-    in.clear();
-    n = i;
-	
-	st1.insertionSort(sum, n);
     for (int i = 0; i < n; i++){
-	    st1.output(sum, i); 
+        Mass[i] = student();
+    }
+	
+	insertionSort(Mass, n);
+
+    out << group << '\n';
+    for (int i = 0; i < n; i++){
+	    Mass[i].output();
     }
 
     in.close();
