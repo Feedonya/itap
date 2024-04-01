@@ -4,21 +4,17 @@
 
 using namespace std;
 
-ifstream in("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_2_12\\input.txt");
-ofstream out("C:\\Users\\Fedor\\Desktop\\itap\\Second_term\\11_2_12\\output.txt");
+ifstream in("input.txt");
+ofstream out("output.txt");
 
-// Функция для считывания матрицы из файла
-bool read(const char* filename, int**& matrix, int& n) {
-    // Чтение размера матрицы
+bool read(int**& matrix, int& n) {
     in >> n;
 
-    // Выделение памяти для матрицы
     matrix = new int* [n];
     for (int i = 0; i < n; ++i) {
         matrix[i] = new int[n];
     }
 
-    // Чтение матрицы из файла
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             in >> matrix[i][j];
@@ -27,8 +23,7 @@ bool read(const char* filename, int**& matrix, int& n) {
     return true;
 }
 
-// Функция для вывода матрицы в файл
-void print(int** matrix, int n, ofstream& out) {
+void print(int** matrix, int n) {
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) {
             out << matrix[i][j] << " ";
@@ -37,7 +32,7 @@ void print(int** matrix, int n, ofstream& out) {
     }
 }
 
-// Функция для сортировки диагонали матрицы по убыванию элементов
+// допилить сортировку и на сдачу
 void sortDiagonal(int** matrix, int n, int row, int col) {
     for (int r = row, c = col; r < n && c < n; r++, c++) {
         int tempR = r;
@@ -48,7 +43,7 @@ void sortDiagonal(int** matrix, int n, int row, int col) {
             }
         }
         if (matrix[r][c] < matrix[tempR][tempC]) {
-            swap(matrix[r][c], matrix[tempR][tempC]);//метод пузырька
+            swap(matrix[r][c], matrix[tempR][tempC]);
         }
     }
 }
@@ -57,7 +52,7 @@ int main() {
     int** matrix = nullptr;
     int n;
 
-    read("input.txt", matrix, n);
+    read(matrix, n);
 
     for (int i = 1; i < n; ++i) {
         sortDiagonal(matrix, n, i, 0); // Сортируем диагональ, параллельную главной, начинающуюся в (i,0)
@@ -66,7 +61,7 @@ int main() {
         sortDiagonal(matrix, n, 0, j); // Сортируем диагональ, параллельную главной, начинающуюся в (0,j)
     }
 
-    print(matrix, n, out);
+    print(matrix, n);
 
     in.close();
     out.close();
