@@ -20,7 +20,7 @@ int main(){
             s1 = s;
     }
 
-	cout << s1 << endl;
+	  cout << s1 << endl;
     cout << temp;
 
     in.close();
