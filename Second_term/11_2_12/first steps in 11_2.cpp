@@ -68,13 +68,29 @@ int main(){
 
         //for (int l = 0; l < len_of_mas; l++)
         //    cout << a[l] << ' ';
-
-
+        i = 0, j = 1+k;
+        for (int l = 0; l < len_of_mas; i++, j--, l++){//выводим отсортированный массив в файл
+            matrix[i][j] = a[l];
+        }
+        /*for(int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                cout << matrix[i][j] << ' ';
+            }
+            cout << '\n';
+        }
+        */
         
         i = 0;
         j = 2+k;
     }
 	cout << '\n';
+
+    for(int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            cout << matrix[i][j] << ' ';
+        }
+        cout << '\n';
+    }
 	
 	i = 1;
     j = 3;
@@ -87,6 +103,13 @@ int main(){
         //вызываем сортировку с элементами массива
         //выводим отсортированный массив в файл
         //обнуляем массив
+    }
+
+    for(int i = 0; i < n; i++){
+        for (int j = 0; j < n; j++){
+            cout << matrix[i][j] << ' ';
+        }
+        cout << '\n';
     }
 
     print(matrix, n);
