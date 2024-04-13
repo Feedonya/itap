@@ -77,7 +77,7 @@ int main(){
         j = temp_j;
     }
 
-    i = 1, j = 3, len_of_mas = 0;
+    i = 1, j = n-1, len_of_mas = 0;
 	for (; i < n-1; i++){
         int temp_i = i, temp_j = j;
 
@@ -98,14 +98,6 @@ int main(){
 
         i = temp_i;
         j = temp_j;
-    }
-
-
-    for(int i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
-            cout << matrix[i][j] << ' ';
-        }
-        cout << '\n';
     }
 
     print(matrix, n);
