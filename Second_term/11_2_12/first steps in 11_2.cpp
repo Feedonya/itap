@@ -55,69 +55,49 @@ int main(){
     read(matrix, n);
 
 	int i = 0, j = 1, len_of_mas = 0;
-	for (int k = 0; k < n/2; k++){
+	for (; j < n-1; j++){
+        int temp_i = i, temp_j = j;
+
         len_of_mas = 0;
-        int* a = new int[n-2+k];//обнуляем массив
-        for (; j>=0; i++, j--){//обходим с 1 по n (диагонали сверху)
+        int* a = new int[j+1];//обнуляем массив
+        for (; j>=0; i++, j--){
             a[len_of_mas] = matrix[i][j];
-            //cout << matrix[i][j] << ' ';//ДОБАВЛЯЕМ ЭТО В МАССИВ ДЛЯ ДАЛЬНЕЙШЕЙ СОРТИРОВКИ
             len_of_mas++;
         }
 
         sort(a,len_of_mas); //вызываем сортировку с элементами массива
 
-        //for (int l = 0; l < len_of_mas; l++)
-        //    cout << a[l] << ' ';
-        i = 0, j = 1+k;
+        i = temp_i;
+        j = temp_j;
         for (int l = 0; l < len_of_mas; i++, j--, l++){//выводим отсортированный массив в файл
             matrix[i][j] = a[l];
         }
-        /*for(int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                cout << matrix[i][j] << ' ';
-            }
-            cout << '\n';
-        }
-        */
-        
-        i = 0;
-        j = 2+k;
+
+        i = temp_i;
+        j = temp_j;
     }
 
-    /*for(int i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
-            cout << matrix[i][j] << ' ';
-        }
-        cout << '\n';
-    }
-    */
-	
     i = 1, j = 3, len_of_mas = 0;
-	for (int k = 0; k < n/2; k++){
+	for (; i < n-1; i++){
+        int temp_i = i, temp_j = j;
+
         len_of_mas = 0;
-        int* a = new int[n-1-k];//обнуляем массив
-        for (; j>0 && i < n; i++, j--){//обходим с 1 по n (диагонали снизу)
+        int* a = new int[i+1];//i+1 or j-1?
+        for (; i < n; j--, i++){//обходим с 1 по n (диагонали снизу)
             a[len_of_mas] = matrix[i][j];
-            //cout << matrix[i][j] << ' ';
             len_of_mas++;
         }
+
         sort(a,len_of_mas);
 
-        i = 1, j = 3;
+        i = temp_i;
+        j = temp_j;
         for (int l = 0; l < len_of_mas; i++, j--, l++){//выводим отсортированный массив в файл
             matrix[i][j] = a[l];
         }
-        
-        /*for(int i = 0; i < n; i++){
-            for (int j = 0; j < n; j++){
-                cout << matrix[i][j] << ' ';
-            }
-            cout << '\n';
-        }
-        */
 
-        i = 2;
-        j = 3+k;
+        i = temp_i;
+        j = temp_j;
     }
 
 
