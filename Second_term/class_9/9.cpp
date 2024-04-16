@@ -23,23 +23,9 @@ public:
     return name + " " + second_name;
   }
   
-  Song operator >(Song s1, Song s2) {
-  if (s1.GetPerformer() < s2.GetPerformer()) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
-  Song operator <(Song s1, Song s2) {
-  if (s1.name > s2.name){
-    return false;
-  }
-  else {
-    return true;
-  }
-}
+	bool operator > (Person s1) {
+		return name > s1.name;
+  	}
 };
 
 class Song {
@@ -49,7 +35,6 @@ private:
   Person lyrics_author;
   string lyrics;
 public:
-
   Song(Person p, Person s, Person l, string lyr) {
     performer = p;
     song_author = s;
@@ -76,13 +61,12 @@ public:
     return lyrics;
   }
   
+  string GetSongInfo() {
+    return << "Song by " << performer << ". Music author is " << song_author() << ". Lyrics author is " << lyrics_author() << "Lyrics:" << endl << lyrics;;
+}
 };
 
 
-void GetSongInfo(Song s) {
-  cout << "Song by " << s.GetPerformer() << ". Music author is " << s.GetSongAuthor() << ". Lyrics author is " << s.GetLyricsAuthor() << endl;
-  cout << "Lyrics:" << endl << s.GetLyrics();
-}
 
 
 int main() {
