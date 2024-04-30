@@ -2,28 +2,25 @@
 #include <stack>
 #include <string>
 
-// Функция для подсчета слов, начинающихся с заданной буквы, и удаления их из стека
-int countAndRemoveWords(std::stack<std::string>& originalStack, char letter) {
-    std::stack<std::string> tempStack;
+using namespace std;
+
+int countAndRemoveWords( stack<string>& originalStack, char letter) {
+    stack< string> tempStack;
     int count = 0;
 
-    // Перебираем слова в исходном стеке
     while (!originalStack.empty()) {
-        std::string word = originalStack.top();
+        string word = originalStack.top();
         originalStack.pop();
 
-        // Если слово начинается с заданной буквы, увеличиваем счетчик и не добавляем его во временный стек
         if (word[0] == letter) {
             count++;
         } else {
-            // Иначе добавляем слово во временный стек
             tempStack.push(word);
         }
     }
 
-    // Восстанавливаем исходный стек из временного стека
     while (!tempStack.empty()) {
-        originalStack.push(tempStack.top());
+    	originalStack.push(tempStack.top());
         tempStack.pop();
     }
 
@@ -31,27 +28,26 @@ int countAndRemoveWords(std::stack<std::string>& originalStack, char letter) {
 }
 
 int main() {
-    std::stack<std::string> wordsStack;
+    setlocale(LC_ALL,"Russian");
+    stack< string> wordsStack;
 
-    // Заполняем стек словами
     wordsStack.push("apple");
     wordsStack.push("banana");
-    wordsStack.push("carrot");
+    wordsStack.push("carrot");//
+    wordsStack.push("cannon");//
     wordsStack.push("dog");
     wordsStack.push("elephant");
     wordsStack.push("fish");
 
-    char letter = 'c'; // Задаем букву
+    char letter = 'c';
 
-    // Подсчитываем количество слов, начинающихся с заданной буквы, и удаляем их из стека
     int count = countAndRemoveWords(wordsStack, letter);
-
-    std::cout << "Количество слов, начинающихся с буквы '" << letter << "': " << count << std::endl;
-
-    std::cout << "Слова после удаления:" << std::endl;
-    // Выводим слова, оставшиеся в стеке
+    
+    cout << "Êîë-âî ñëîâ ñ çàäàííîé áóêâû'" << letter << "': " << count <<  endl;
+    cout << "Ñëîâà ïîñëå óäàëåíèÿ: " <<  endl;
+    
     while (!wordsStack.empty()) {
-        std::cout << wordsStack.top() << std::endl;
+       	cout << wordsStack.top() <<  endl;
         wordsStack.pop();
     }
 
