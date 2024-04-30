@@ -1,55 +1,89 @@
-#include <iostream>
+#include <fstream>
+#include <queue>
 #include <stack>
-#include <string>
+#include <list>
 
 using namespace std;
 
-int countAndRemoveWords( stack<string>& originalStack, char letter) {
-    stack< string> tempStack;
-    int count = 0;
-
-    while (!originalStack.empty()) {
-        string word = originalStack.top();
-        originalStack.pop();
-
-        if (word[0] == letter) {
-            count++;
-        } else {
-            tempStack.push(word);
-        }
-    }
-
-    while (!tempStack.empty()) {
-    	originalStack.push(tempStack.top());
-        tempStack.pop();
-    }
-
-    return count;
-}
-
 int main() {
-    setlocale(LC_ALL,"Russian");
-    stack< string> wordsStack;
 
-    wordsStack.push("apple");
-    wordsStack.push("banana");
-    wordsStack.push("carrot");//
-    wordsStack.push("cannon");//
-    wordsStack.push("dog");
-    wordsStack.push("elephant");
-    wordsStack.push("fish");
+  ifstream in("input.txt");
+  ofstream out("out.txt");
 
-    char letter = 'c';
+  queue<int> q;
+  stack<int> s;
+  list<int> l;
 
-    int count = countAndRemoveWords(wordsStack, letter);
-    
-    cout << "Êîë-âî ñëîâ ñ çàäàííîé áóêâû'" << letter << "': " << count <<  endl;
-    cout << "Ñëîâà ïîñëå óäàëåíèÿ: " <<  endl;
-    
-    while (!wordsStack.empty()) {
-       	cout << wordsStack.top() <<  endl;
-        wordsStack.pop();
+  while (in.peek() != EOF) {
+    int i;
+    in >> i;
+    q.push(i);
+    s.push(i);
+    l.push_back(i);
+  }
+
+  queue<int> newQ;
+  int lastInt = q.front();
+  q.pop();
+  newQ.push(lastInt);
+  do {
+    if (q.front() != lastInt) {
+      lastInt = q.front();
+      q.pop();
+      newQ.push(lastInt);
     }
+    else {
+      q.pop();
+    }
+  } while (!q.empty());
 
-    return 0;
+  stack<int> newS;
+  lastInt = s.top();
+  s.pop();
+  newS.push(lastInt);
+  do {
+    if (s.top() != lastInt) {
+      lastInt = s.top();
+      s.pop();
+      newS.push(lastInt);
+    }
+    else {
+      s.pop();
+    }
+  } while (!s.empty());
+
+  list<int> newL;
+  lastInt = l.front();
+  l.pop_front();
+  newL.push_back(lastInt);
+  do {
+    if (l.front() != lastInt) {
+      lastInt = l.front();
+      l.pop_front();
+      newL.push_back(lastInt);
+    }
+    else {
+      l.pop_front();
+    }
+  } while (!l.empty());
+
+  out << "Stack: ";
+  while (!newS.empty()) {
+    out << newS.top() << ' ';
+    newS.pop();
+  }
+
+  out << "\nQueue: ";
+  while (!newQ.empty()) {
+    out << newQ.front() << ' ';
+    newQ.pop();
+  }
+
+  out << "\nList: ";
+  while (!newL.empty()) {
+    out << newL.front() << ' ';
+    newL.pop_front();
+  }
+
+  return 0;
 }
