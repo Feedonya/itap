@@ -52,6 +52,7 @@
         "typeinfo": "cpp",
         "stack": "cpp",
         "queue": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "set": "cpp"
     }
 }
